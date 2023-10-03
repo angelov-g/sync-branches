@@ -21,4 +21,5 @@ jobs:
 
       - name: Sync 'preview' with 'main'
         run: |
+          git config pull.rebase false
           git pull origin main --allow-unrelated-histories
