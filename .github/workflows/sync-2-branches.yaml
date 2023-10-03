@@ -5,6 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+  
+permissions:
+  contents: write
 
 jobs:
   sync-branches:
@@ -12,17 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 'main' branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
 
-      - name: Remove config file
+      - name: Ignore no-changes.txt
         run:
-          rm -f gatsby-config.ts
+          rm -f no-changes.txt
 
       - name: Checkout 'preview' branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
         with:
           ref: preview
 
-      - name: Merge changes
-        run:
-          git merge origin/main
+      - name: Sync 'preview' with 'main'
+        run: |
+          git config user.name $GITHUB_ACTOR
+          git merge -X theirs origin/main --allow-unrelated-histories
+          git push --set-upstream origin preview
