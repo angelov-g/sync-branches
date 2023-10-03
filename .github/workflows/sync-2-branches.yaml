@@ -17,10 +17,6 @@ jobs:
       - name: Checkout 'main' branch
         uses: actions/checkout@master
 
-      - name: Ignore no-changes.txt
-        run:
-          rm -f no-changes.txt
-
       - name: Checkout 'preview' branch
         uses: actions/checkout@master
         with:
@@ -30,4 +26,4 @@ jobs:
         run: |
           git config user.name $GITHUB_ACTOR
           git merge -X theirs origin/main --allow-unrelated-histories
-          git push --set-upstream origin preview
+          git push
