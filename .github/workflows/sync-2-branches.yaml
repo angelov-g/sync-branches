@@ -1,0 +1,28 @@
+name: Sync 'preview' with 'main'
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  sync-branches:
+    name: Update 'preview' branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 'main' branch
+        uses: actions/checkout@v2
+
+      - name: Remove config file
+        run:
+          rm -f gatsby-config.ts
+
+      - name: Checkout 'preview' branch
+        uses: actions/checkout@v2
+        with:
+          ref: preview
+
+      - name: Merge changes
+        run:
+          git merge origin/main
