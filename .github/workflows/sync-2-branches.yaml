@@ -14,6 +14,10 @@ jobs:
       - name: Checkout 'main' branch
         uses: actions/checkout@master
 
+      - name: Ignore no-changes.txt
+        run:
+          rm -f no-changes.txt
+
       - name: Checkout 'preview' branch
         uses: actions/checkout@master
         with:
@@ -22,5 +26,5 @@ jobs:
       - name: Sync 'preview' with 'main'
         run: |
           git config user.name $GITHUB_ACTOR
-          git config pull.rebase false
+          git config pull.ff only
           git pull origin main --allow-unrelated-histories
