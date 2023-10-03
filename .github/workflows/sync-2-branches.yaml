@@ -11,13 +11,11 @@ jobs:
     name: Update 'preview' branch
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 'main' branch
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Merge main -> preview
-        uses: devmasx/merge-branch@master
+      - uses: connor-baer/action-sync-branch@main
         with:
-          type: now
-          target_branch: preview
-          message: Sync Branches main and preview
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: preview
+          token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
