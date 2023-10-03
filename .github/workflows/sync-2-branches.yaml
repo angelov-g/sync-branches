@@ -13,9 +13,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
-
-      - uses: connor-baer/action-sync-branch@main
         with:
-          branch: preview
-          token: ${{ secrets.GITHUB_TOKEN }}
-          force: false
+          ref: preview
+
+      - name: Merge branches
+        run:
+          git merge origin/main
