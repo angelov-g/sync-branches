@@ -25,4 +25,5 @@ jobs:
 
       - name: Merge changes
         run:
+          git config --global user.name "Your Name"
           git merge --allow-unrelated-histories origin/main
