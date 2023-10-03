@@ -16,7 +16,7 @@ jobs:
 
       - name: Remove config file
         run:
-          rm -f gatsby-config.ts
+          rm -f no-changes.txt
 
       - name: Checkout 'preview' branch
         uses: actions/checkout@v2
