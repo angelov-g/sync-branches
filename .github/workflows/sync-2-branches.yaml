@@ -5,6 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+  
+permissions:
+  contents: write
 
 jobs:
   sync-branches:
@@ -27,4 +30,4 @@ jobs:
         run: |
           git config user.name $GITHUB_ACTOR
           git merge -X theirs origin/main --allow-unrelated-histories
-          git push
+          git push --set-upstream origin preview
