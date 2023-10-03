@@ -26,4 +26,4 @@ jobs:
       - name: Sync 'preview' with 'main'
         run: |
           git config user.name $GITHUB_ACTOR
-          git merge origin/main --allow-unrelated-histories
+          git merge -X theirs origin/main --allow-unrelated-histories
