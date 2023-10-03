@@ -22,6 +22,6 @@ jobs:
         uses: devmasx/merge-branch@master
         with:
           type: now
-          from_branch: main
           target_branch: preview
+          message: Sync Branches main and preview
           github_token: ${{ secrets.GITHUB_TOKEN }}
