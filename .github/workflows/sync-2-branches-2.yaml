@@ -14,10 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Remove config file
-        run:
-          rm -f no-changes.txt
-
       - uses: connor-baer/action-sync-branch@main
         with:
           branch: preview
