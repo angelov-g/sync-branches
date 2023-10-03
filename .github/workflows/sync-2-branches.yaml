@@ -26,6 +26,4 @@ jobs:
         run: |
           git config user.name $GITHUB_ACTOR
           git merge -X theirs origin/main --allow-unrelated-histories
-          git reset no-changes.txt
-          git commit
           git push
