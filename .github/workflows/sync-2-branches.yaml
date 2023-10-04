@@ -28,4 +28,4 @@ jobs:
           git config merge.theirs.driver true
           git config merge.ours.driver true
           git merge origin/main --allow-unrelated-histories
-          git push
+          git push origin/preview
