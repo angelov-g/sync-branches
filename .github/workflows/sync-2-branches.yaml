@@ -17,6 +17,11 @@ jobs:
       - name: Checkout 'main' branch
         uses: actions/checkout@master
 
+      - name: Checkout 'preview' branch
+        uses: actions/checkout@master
+        with:
+          ref: preview
+
       - name: Set Git config
         run: |
           git config --local user.email "actions@github.com"
@@ -24,9 +29,5 @@ jobs:
 
       - name: Sync 'preview' with 'main'
         run: |
-          git fetch --unshallow
-          git branch
-          git checkout preview
-          git pull
           git merge main -m "Auto-merge master back to dev"
           git push
