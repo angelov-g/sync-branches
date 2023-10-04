@@ -25,6 +25,7 @@ jobs:
       - name: Sync 'preview' with 'main'
         run: |
           git fetch --unshallow
+          git branch
           git checkout preview
           git pull
           git merge main -m "Auto-merge master back to dev"
