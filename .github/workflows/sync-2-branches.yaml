@@ -17,15 +17,15 @@ jobs:
       - name: Checkout 'main' branch
         uses: actions/checkout@master
 
-      - name: Checkout 'preview' branch
-        uses: actions/checkout@master
-        with:
-          ref: preview
+      - name: Set Git config
+        run: |
+          git config --local user.email "actions@github.com"
+          git config user.name "GitHub Actions"
 
       - name: Sync 'preview' with 'main'
         run: |
-          git config user.name $GITHUB_ACTOR
-          git config merge.theirs.driver true
-          git config merge.ours.driver true
-          git merge origin/main --allow-unrelated-histories
+          git fetch --unshallow
+          git checkout preview
+          git pull
+          git merge --no-ff master -m "Auto-merge master back to dev"
           git push
