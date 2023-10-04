@@ -20,7 +20,7 @@ jobs:
       - name: Checkout 'preview' branch
         uses: actions/checkout@master
         with:
-          ref: preview
+          ref: georgi
 
       - name: Set Git config
         run: |
