@@ -29,5 +29,5 @@ jobs:
 
       - name: Sync 'preview' with 'main'
         run: |
-          git merge main -m "Auto-merge master back to dev"
+          git merge origin/main -m "Auto-merge master back to dev"
           git push
